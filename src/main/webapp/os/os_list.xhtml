@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+	
+		<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<title>Ordems De serviços cadastrados</title>
+		</h:head>
+
+		<f:metadata>
+			<f:viewAction action="#{ordemServicoController.init}" />
+		</f:metadata>
+
+		<ui:define name="content">
+		<div class="aw-header"><i class="fa fa-tag"></i>Listagem de Ordem de Serviço</div>
+		<h:form id="formuso">
+ 
+			<p:commandButton value="novo"  action="#{ordemServicoController.novo()}" icon="fa fa-fw fa-plus"/>
+			<p:dataTable id="tbl" value="#{ordemServicoController.listar}" var="os" 
+				rules="rows" cellpadding="5" layout="grid"  paginator="true" rows="12" 
+				 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+				 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" paginatorPosition="bottom">
+
+
+				<p:column headerText="N°" style="width:5%;">
+					<h:outputText value="#{os.id}" />
+				</p:column>
+				<p:column headerText="Cliente" style="width:25%;">
+					<h:outputText value="#{os.cliente.nome}" />
+				</p:column>
+				
+				<p:column headerText="Entrada">
+					<h:outputText value="#{os.dataEntrada}" >
+					<f:convertDateTime  pattern="dd/MM/yyyy HH:mm" timeZone="America/Sao_Paulo" />
+					</h:outputText>
+				</p:column>
+				
+				
+				<p:column headerText="Saida ">
+					<h:outputText value="#{os.dataSaida}" >
+					<f:convertDateTime  pattern="dd/MM/yyyy HH:mm" timeZone="America/Sao_Paulo" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Valor">
+					<h:outputText value="não definido" />
+				</p:column>
+				
+				<p:column headerText="Valor">
+					<h:outputText value="#{os.preco}" />
+				</p:column>
+				
+				<p:column headerText="Ações" style="width:15%;text-align:center">
+					<p:commandButton  action="#{ordemServicoController.editar}" 
+						icon="fa fa-fw fa-edit">
+						<f:setPropertyActionListener target="#{ordemServicoController.ordemServico}" 
+						value="#{os}"	/>
+					</p:commandButton>
+					
+					<p:commandButton  action="#{ordemServicoController.visualizarOS()}" icon="fa fa-eye" 
+					update=":formuso" style="background:#5CB85C;border:none" ajax="true">
+						<f:setPropertyActionListener target="#{ordemServicoController.ordemServico}" 
+						value="#{os}"	/>
+					</p:commandButton>
+				<p:commandButton  action="#{ordemServicoController.excluir}" icon="fa fa-trash"	style="background:#f2001c;border:none">
+				 <p:confirm header="Confirmação" message="Tem certeza que deseja excluir esta OS?" icon="ui-icon-alert" />
+				 <f:setPropertyActionListener target="#{ordemServicoController.ordemServico}" value="#{os}"	/>
+				 
+				</p:commandButton>
+				
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        <p:commandButton value="Não" type="button" style="background:#f2001c;border:none"  styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    </p:confirmDialog>
+			</p:column>
+				
+			<!-- <p:column headerText="Ativo" style="width:5%;">
+				<h:commandLink action="#{usuarioMB.ativar}" title="status"  >
+					<h:graphicImage library="imagens" name="usuario_ativo_#{usuario.ativo}.png" style="border:0" />
+					<f:setPropertyActionListener target="#{usuarioMB.usuario}"
+						value="#{usuario}" />
+				</h:commandLink>
+			</p:column> -->
+			</p:dataTable>
+
+ 		</h:form>
+	</ui:define>
+</ui:composition>

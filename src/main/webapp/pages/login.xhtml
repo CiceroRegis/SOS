@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" content=""/>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="SGP, Sistema de Gestão Política"/>
+	    <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="author" content="SGP, Sistema de Gestão Política"/>
+	</f:facet>
+	<title>#{messages.tituloAplicacao} - Login</title>
+	
+	<!-- CSS -->	 	    		    	    		  
+	<!-- <h:outputStylesheet library="css" name="bootstrap.min.css" /> -->
+	<h:outputStylesheet library="css" name="font-awesome.min.css" />
+	<!-- <h:outputStylesheet library="styles" name="login.css" /> -->
+	<link href="/resources/sgi/styles/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="/resources/sgi/styles/login.css" rel="stylesheet" type="text/css"/>
+	<!-- AngularJS / jQuery -->
+	<h:outputScript library="primefaces" name="jquery/jquery.js" />
+	<script type="text/javascript">
+      $ = jQuery;
+    </script>
+	<h:outputScript library="js" name="bootstrap.min.js"/>
+	
+</h:head>
+<h:body class="text-center">
+<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+<h:form prependId="false" id="formMsg">
+</h:form>
+  <h:form id="formLogin" styleClass="form-signin" prependId="false">
+      <img  src="#{facesContext.externalContext.requestContextPath}/resources/images/logo.png" />
+      <h5 class="h5 mb-3 font-weight-normal" style="color: #666">SGP - Sistema de Gestão</h5>
+      <p:inputMask id="username"  styleClass="form-control field-cpf" placeholder="Seu CPF" mask="999.999.999-99"  />
+      <p:password id="password" name="password" placeholder="Sua senha"  styleClass="form-control field-password"  />
+      <h:commandButton id="submit" value="Entrar" styleClass="btn btn-lg btn-primary btn-block" title="Acessar" />
+     
+      <p class="mt-2 mb-1 text-muted" style="color: #666 !important;">&copy; 2018 - DF Vitória</p>
+      <p class="mt-2 mb-1 text-muted" style="color: #666 !important;">Todos os direitos reservados</p>      
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>      
+  </h:form>
+<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false" responsive="true">
+ <p:graphicImage library="images" name="loading.gif" />
+</p:dialog>	
+<p:confirmDialog global="true" showEffect="fade">
+  <h:form id="formConfirm" prependId="false">
+     <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes primary" icon="ui-icon-check" />
+     <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no default" icon="ui-icon-close" />
+  </h:form>
+</p:confirmDialog>
+</h:body>
+</html>

@@ -1,0 +1,22 @@
+.form{
+	margin-left: -2px;
+	padding-top: 20px;
+	background-color: #ffffff;
+	border-radius: 2px;
+	-webkit-box-shadow: 0 10px 6px -6px #777;
+	-moz-box-shadow: 0 10px 6px -6px #777;
+	box-shadow: 0 10px 6px -6px #777;}
+	
+	
+.title-form{
+	font-size: 15px;
+	text-transform: uppercase;
+	font-weight: 100;
+	text-align: left;
+	color: $asphalt;
+	border-bottom: 1px solid $asphalt;
+	padding-bottom: 5px;
+	margin-bottom: -1%;
+	margin-left: 3%;
+}
+	

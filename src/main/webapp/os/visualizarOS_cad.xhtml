@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+	
+		<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<title>OS Cadastradas</title>
+		</h:head>
+
+		<ui:define name="content">
+
+		<f:metadata>
+			<f:viewAction action="#{ordemServicoController.init}" />
+		</f:metadata>
+
+		<h3 style="margin-top: 60px;margin-bottom: -50px;" > <i  class="glyphicon glyphicon-tag"></i>OS</h3>
+		
+		<h:form id="formOS">
+			<h1 style="margin-top: 6%;font-size: 150%;"></h1>
+
+			<p:dataList value="#{ordemServicoController.ordemServico}" var="os">
+				<f:facet name="header">
+            Visualizar Ordem de Serviço
+        </f:facet>
+				<p:tabView>
+					<p:tab title="Dados Gerais">
+						<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="N° da Ordem" />
+							<h:outputText value="#{os.id}" />
+
+							<h:outputLabel value="Cliente:" />
+							<h:outputText value="#{os.cliente.nome}" />
+
+							<h:outputLabel value="Entraga:" />
+							<h:outputText value="#{os.dataEntrada}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm"
+									timeZone="America/Sao_Paulo" />
+							</h:outputText>
+
+							<h:outputLabel value="Saida:" />
+							<h:outputText value="#{os.dataSaida}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm"
+									timeZone="America/Sao_Paulo" />
+							</h:outputText>
+
+							<h:outputLabel value="Cadastrado por:" />
+						</p:panelGrid>
+					</p:tab>
+
+					<p:tab title="Produto/Peças">
+						<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Produto" />
+
+							<h:outputLabel value="Quantidade:" />
+
+							<h:outputLabel value="Tipo" />
+
+							<h:outputLabel value="Valor Custo:" />
+
+							<h:outputLabel value="Valor Unidade:" />
+
+							<h:outputLabel value="desconto:" />
+
+							<h:outputLabel value="Total:" />
+						</p:panelGrid>
+					</p:tab>
+
+
+					<p:tab title="Equipamentos">
+						<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Equipamento:" />
+
+							<h:outputText value="#{os.equipamento} " />
+
+							<h:outputLabel value="Marca:" />
+
+							<h:outputText value="#{os.marca}" />
+
+							<h:outputLabel value="Modelo" />
+							<h:outputText value="#{os.modelo}" />
+							
+							<h:outputLabel value="Condições:" />
+							<h:outputText value="#{os.descricao}" />
+							
+							<h:outputLabel value="Defeitos:" />
+							<h:outputText value="#{os.defeito}" />
+							
+						</p:panelGrid>
+					</p:tab>
+				</p:tabView>
+
+			</p:dataList>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

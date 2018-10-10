@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+	
+	<h:head>
+		<title>Cadastro de Fornecedores</title>
+	</h:head>
+	
+	<ui:define name="content">
+		<h:form>
+		<p:messages life="4000"/>
+			<h:inputHidden value="#{fornecedorController.fornecedor.id}" />
+			<div class="ui-fluid">
+			
+				<p:panel id="basic" header="Cadastro de Fornecedores"  >
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-4" layout="grid" 	styleClass="ui-panelgrid-blank" >
+						
+						<p:outputLabel value="Tipo:" />
+						<p:selectOneMenu value="#{cPFCNPJ.opcao}">
+						<f:selectItem itemLabel="Selecione" />
+							<f:selectItem itemLabel=" Pessoa Física" itemValue="FISICA" />
+							<f:selectItem itemLabel="pessoa Jurídica" itemValue="JURIDICA" />
+							<p:ajax process="@this" update="opcao" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="opcao" value="Tipo.:" />
+						
+						<p:outputPanel id="opcao" >
+							<p:inputMask id="campoFisica" mask="999.999.999-99" 
+								maxlength="50" value="#{fornecedorController.fornecedor.tipo}"
+								rendered="#{cPFCNPJ.FISICA}" />
+
+							<p:inputMask id="campoJuridica" mask="99.999.999/9999-99"
+								maxlength="50"  value="#{fornecedorController.fornecedor.tipo}"
+								rendered="#{cPFCNPJ.JURIDICA}" />
+
+						</p:outputPanel>
+						
+						<p:outputLabel value="Nome do fornecedor:" for="nome" />
+						<p:inputText id="nome" label="Nome" value="#{fornecedorController.fornecedor.nome}" 
+						required="true" requiredMessage="campo fornecedor é obrigatorio?">
+							<f:validateLength minimum="10" maximum="50" />
+						</p:inputText>
+
+						<p:outputLabel value="Celular" for="cel" />	 
+						<p:inputMask mask="(99)99999-9999" id="cel" value="#{fornecedorController.fornecedor.celular}" required="true"/>
+							
+						<p:outputLabel value="Tel" for="tel" />	 
+						<p:inputMask mask="(99)9999-9999" id="tel" value="#{fornecedorController.fornecedor.telefone}" required="true"/>
+						
+						<p:outputLabel value="E-mail" for="email" />	 
+						<p:inputText id="email" value="#{fornecedorController.fornecedor.email}" 
+						 />
+						
+						<p:outputLabel value="CEP:" for="cep" />
+						<p:inputMask mask="99999-999" id="cep" value="#{fornecedorController.fornecedor.cep}" />
+
+						<p:outputLabel value="Cidade" for="cid"/>	
+						<p:inputText id="cid" value="#{fornecedorController.fornecedor.cidade}" required="true"/>
+						
+						<p:outputLabel value="Bairro" for="ba"/>	
+						<p:inputText id="ba" value="#{fornecedorController.fornecedor.bairro}" required="true"/>
+
+						<p:outputLabel value="Logradouro" for="log"/>	
+						<p:inputText id="log" value="#{fornecedorController.fornecedor.logradouro}" />
+
+						<p:outputLabel value="Complemento" for="comp"/>	
+						<p:inputText id="comp" value="#{fornecedorController.fornecedor.complemento}" />
+						
+						<p:outputLabel value="Numero:" for="num"/>
+						<p:inputText id="num" value="#{fornecedorController.fornecedor.numero}" />
+						
+						<p:outputLabel value="Data de cadastro:" for="cad"/>
+						<p:calendar id="cad" value="#{fornecedorController.fornecedor.dataCadastro}" locale="pt" pattern="dd/MM/yyyy HH:mm">
+						</p:calendar>
+
+						<p:commandButton action="#{fornecedorController.salvar}" value="Salvar" icon="fa fa-check" 
+						style="margin-left:150%;width:55%;" update="@form"  ajax="true"/>
+		
+					</p:panelGrid>
+				</p:panel>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

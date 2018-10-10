@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>SGI</title>
+	<!-- 	<h:outputStylesheet library="sgi" name="styles/pace-theme-mac-osx.tmpl.css" />
+ -->
+	<h:outputStylesheet library="sgi" name="styles/custom.css" />
+	<h:outputStylesheet library="sgi" name="styles/layout.css" />
+	<h:outputStylesheet library="sgi" name="styles/components.css" />
+	<h:outputStylesheet library="sgi" name="styles/AdminLTE.min.css" />
+	<h:outputStylesheet library="sgi" name="styles/AdminLTE.min.css" />
+	<h:outputStylesheet library="sgi" name="styles/form.css" />
+	<h:outputStylesheet library="sgi" name="styles/bootstrap.min.css" />
+
+	<!-- 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+ -->
+</h:head>
+
+<h:body>
+
+
+
+	<header class="aw-topbar">
+		<p:growl id="growl" sticky="false" life="10000" responsive="true" />
+		<h:graphicImage value="/resources/sgi/img/OMEGA-SOS.jpg" style="width:200px;"/>
+		<a href="#" class="aw-toggle  js-toggle"> <i class="fa  fa-bars"></i></a>
+	</header>
+
+	<aside class="aw-sidebar  js-sidebar">
+	<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+		<ui:include src="menu.xhtml" />
+		
+	</aside>
+	<section class="aw-content  js-content">
+		<ui:insert name="content" />
+		<!-- <ui:include src="footer.xhtml" /> -->
+		<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+			closable="false" resizable="false" showHeader="false"
+			responsive="true" width="102" height="82">
+			<p:graphicImage value="/resources/sgi/img/Spinner-1s-58px.gif" />
+			<h:outputText value="Aguarde..." />
+		</p:dialog>
+	</section>
+	
+
+</h:body>
+
+<h:outputScript target="body" library="primefaces"
+	name="jquery/jquery.js" />
+<h:outputScript target="body" library="sgi" name="javascripts/app.js" />
+<h:outputScript target="body" library="sgi"	name="javascripts/pace.min.js" />
+<h:outputScript target="body" library="sgi" name="javascripts/menu.js" />
+
+
+
+</html>

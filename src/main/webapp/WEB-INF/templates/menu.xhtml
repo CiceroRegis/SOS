@@ -1,0 +1,156 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ul id="accordion" class="accordion">
+		<li>
+           <div class="link">
+				<p:link href="/Inicio.jsf" >
+					<i class="fa fa-home"></i>
+					<span >Home</span>
+				</p:link>
+
+			</div>
+			<div class="link"><i class="fa fa-pencil"></i>Cadastros
+			<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				 <p:link  href="/clientes/clientes_list.jsf">
+                <span>Clientes</span>
+            </p:link>
+            
+            
+             <p:link href="/admin/usuarios_list.jsf">
+                <span>Funcionarios</span>
+            </p:link>
+            
+             <p:link href="/fornecedores/fornecedores_list.jsf">
+                <span>Fornecedores</span>
+            </p:link>
+            
+             <p:link href="/clientes/transportadoras_cad.jsf">
+                <i></i>
+                <span>Transportadoras</span>
+            </p:link>
+            
+             <p:link href="/clientes/servicos_cad.jsf">
+                <i></i>
+                <span>Serviços</span>
+            </p:link>
+			</ul>
+		</li>
+		<li >
+			<div class="link"><i class="fa fa-tag"></i>OS<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				
+             <p:link href="/os/os_list.jsf">
+                <i></i>
+                <span>Gerenciar OS</span>
+            </p:link>
+			</ul>
+		</li>
+		<li >
+			<div class="link"><i class="fa fa-shopping-basket"></i>Estoque<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				
+             <p:link href="/estoque/estoque_cad.jsf">
+                <i></i>
+                <span>Controle de Estoque</span>
+            </p:link>
+            
+            <p:link href="/estoque/produtos_cad.jsf">
+                <i></i>
+                <span>Cadastrar Produtos</span>
+            </p:link>
+            
+            <p:link href="/produtos/status_estoque.jsf">
+                <i></i>
+                <span>Status</span>
+            </p:link>
+			</ul>
+		</li>
+		
+		<li >
+			<div class="link"><i class="fa fa-plus"></i>Pedidos<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				
+             <p:link href="/pedidos/lancar_ped.jsf">
+                <i></i>
+                <span> orçamentos a clientes</span>
+            </p:link>
+            
+            <p:link href="/pedidos/recibo_cli.jsf">
+                <i></i>
+                <span> recibo/NFE</span>
+            </p:link>
+            <p:link href="/pedidos/orcamento_cli.jsf">
+                <i></i>
+                <span>orçamento para recibo</span>
+            </p:link>
+			</ul>
+		</li>
+		
+		<li >
+			<div class="link"><i class="fa fa-usd"></i>Financeiro<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				
+             <p:link href="/financeiro/caixa_financa.jsf">
+                <i></i>
+                <span>Caixa</span>
+            </p:link>
+            
+            <p:link href="/financeiro/valor_vendas.jsf">
+                <i></i>
+                <span>Valores de venda</span>
+            </p:link>
+			</ul>
+		</li>
+		
+		<li >
+			<div class="link"><i class="fa fa-file-text-o"></i>Relatorios<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				
+             <p:link href="/relatorio/relatorio_gerados.jsf">
+                <i></i>
+                <span>Relatórios</span>
+	            </p:link>
+            
+			</ul>
+		</li>
+		<li >
+			<div class="link"><i class="fa fa-plus"></i>Extras<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				
+             <p:link href="/extras/sms_cli.jsf">
+                <i></i>
+                <span>Envio de SMS ao cliente</span>
+            </p:link>
+             <p:link href="/extra/email_cli.jsf">
+                <i></i>
+                <span>Envio de email ao cliente</span>
+            </p:link>
+			</ul>
+		</li>
+		
+		<li>
+			<div class="link"><i class="fa fa-cog"></i>Configurações<i class="fa fa-chevron-down"></i></div>
+			<ul class="submenu">
+				
+             <p:link href="/configuracao/empressora_config.jsf">
+                <i></i>
+                <span>Configuração de impressora</span>
+            </p:link>
+             <p:link href="/configuracao/configuracao_usu.jsf">
+                <i></i>
+                <span>Envio de email ao cliente</span>
+            </p:link>
+            
+             <p:link href="/configuracao/permissao_usu.jsf">
+                <i></i>
+                <span>Permissao</span>
+            </p:link>
+			</ul>
+		</li>
+	</ul>
+	
+</ui:composition>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+	
+		<h:head>
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<title>Clientes cadastrados</title>
+		</h:head>
+		<ui:define name="content">
+<section class="aw-header"><i class="fa fa-group"></i>Listagem de Clientes</section>
+		<f:metadata>
+			<f:viewAction action="#{clienteController.init}" />
+		</f:metadata>
+		
+		<h:form id="formcli">
+			
+			<p:commandButton value="novo" action="#{clienteController.novo()}" icon="fa fa-fw fa-plus"/>
+			<p:dataTable value="#{clienteController.listaClientes}" var="cliente" rules="rows"
+				cellpadding="5" layout="grid"  paginator="true" rows="10" 
+				 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} 
+				 {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" paginatorPosition="bottom">
+
+				<p:column headerText="Id" style="width:5%;text-align:center">
+					<h:outputText value="#{cliente.id}" />
+				</p:column>
+
+				<p:column headerText="Nome"  style="width:25%;" filterBy="#{cliente.nome}">
+					<h:outputText value="#{cliente.nome}" />
+				</p:column>
+				
+				<p:column headerText="Tipo" filterBy="#{cliente.tipo}" style="width:12%;text-align:center">
+					<h:outputText value="#{cliente.tipo}" />
+				</p:column>
+				
+				<p:column headerText="Telefone" style="width:12%;text-align:center">
+					<h:outputText value="#{cliente.telefone}"/>
+				</p:column>
+				
+				<p:column headerText="Celular" style="width:12%;text-align:center">
+					<h:outputText value="#{cliente.celular}"/> 
+				</p:column>
+				
+				<p:column headerText="email">
+					<h:outputText value="#{cliente.email}"/> 
+				</p:column>
+				
+				<p:column headerText="Ações" style="width:10%;" >
+					<p:commandButton  action="#{clienteController.editar}" 
+					     icon="fa fa-fw fa-edit" ajax="false" update="opcao" >
+					     	<f:setPropertyActionListener target="#{clienteController.cliente}" 
+							value="#{cliente}"	/>
+					</p:commandButton>
+					
+					<p:commandButton  action="#{clienteController.visualizar}" style="background:#5CB85C;border:none"
+					     icon="fa fa-fw fa-eye" ajax="false" update="opcao" >
+					     	<f:setPropertyActionListener target="#{clienteController.cliente}" 
+							value="#{cliente}"	/>
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+ 		</h:form>
+	</ui:define>
+</ui:composition>
